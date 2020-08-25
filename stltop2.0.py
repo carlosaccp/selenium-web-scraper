@@ -118,3 +118,4 @@ sqlite_table = "STLTop data {}".format(date)
 df.to_sql(sqlite_table, sqlite_connection, if_exists='replace')
 # Close the connection after the whole process is finished
 sqlite_connection.close()
+
