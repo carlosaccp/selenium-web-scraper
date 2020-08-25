@@ -6,7 +6,6 @@
 # Importing all of the necessary packages for the webscraper, make sure all of them are installed
 
 import selenium
-import urllib 
 import time
 import scipy as sp
 import math
@@ -119,6 +118,3 @@ sqlite_table = "STLTop data {}".format(date)
 df.to_sql(sqlite_table, sqlite_connection, if_exists='replace')
 # Close the connection after the whole process is finished
 sqlite_connection.close()
-
-
-
