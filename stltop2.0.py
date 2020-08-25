@@ -3,10 +3,13 @@
 # The aim of this program is to scrape designer data from STLTop and store it in an sqlite file so it can be uploaded to Metabase
 # THIS PROGRAM IS MEANT TO BE RAN EVERY 24 HOURS, IF NOT THE DATA GATHERED IS USELESS!
 
+# What you need:
+# Packages: Selenium, time, scipy, math, datetime, pandas, sqlite3, sqlalchemy
+# Software: A chromium chromedriver called 'chromedriver'
+
 # Importing all of the necessary packages for the webscraper, make sure all of them are installed
 
 import selenium
-import urllib 
 import time
 import scipy as sp
 import math
@@ -21,12 +24,16 @@ from selenium.webdriver.chrome.options import Options
 # Create a date variable and set it to today's date and time
 date = datetime.date(datetime.now())
 
-# Define the options for when the chromedriver opens, which for me is set the window size to my monitor's size (fullscreen not working for some reason)
+# Define the options for when the chromedriver opens
+# Note these options are made for Windows users, they do not work on (at least my) MacOs syste,
 chrome_options = Options()
+chrome_options.add_argument("no-sandbox")
+chrome_options.add_argument("--disable-extensions")
+chrome_options.add_argument("--headless")
 chrome_options.add_argument("window-size=1680,1050")
 
 # Tell Python to locate the Webdriver, as well as the options we want it to run. In my case, I had it in the same folder as the code so this is enough
-driver = webdriver.Chrome(executable_path=r"./chromedriver", options=chrome_options)
+driver = webdriver.Chrome(executable_path=r"/usr/bin/chromedriver ", options=chrome_options)
 # Open the website we want to scrape. I wanted to scrape www.stltop.com/
 driver.get("https://www.stltop.com/")
 
